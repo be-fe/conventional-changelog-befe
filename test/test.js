@@ -57,7 +57,7 @@ betterThanBefore.setups([
     gitDummyCommit(['fix: use npm@5 (@username)'])
   },
   function() {
-    gitDummyCommit(['fix: use #5', ' closes #11,#12,du-abc-13'])
+    gitDummyCommit(['Fix: use #5', ' closes #11,#12,du-abc-13'])
   }
 ])
 

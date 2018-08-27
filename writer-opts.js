@@ -124,6 +124,7 @@ function getWriterOpts() {
         discard = false
       })
 
+      commit.type = typeof commit.type === 'string' ? commit.type.toLowerCase() : commit.type
       if (commit.type === `feat`) {
         commit.type = `Features`
       } else if (commit.type === `fix`) {
