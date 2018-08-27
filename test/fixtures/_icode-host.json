@@ -1,0 +1,9 @@
+{
+  "repository": "ghe",
+  "version": "v3.0.0",
+  "repository": {
+    "type": "git",
+    "url": "ssh://yucong02@icode.baidu.com:8235/baidu/dulife/dulife-pc"
+  },
+  "icafe": "dulife-hr"
+}
