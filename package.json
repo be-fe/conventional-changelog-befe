@@ -1,8 +1,8 @@
 {
-  "name": "conventional-changelog-befe",
+  "name": "@baidu/conventional-changelog-befe",
   "version": "1.0.0",
   "main": "index.js",
-  "description": "conventional-changelog preset for baidu BEFE.",
+  "description": "conventional-changelog @baidu/preset for baidu BEFE.",
   "author": "imcuttle",
   "scripts": {
     "test": "mocha --timeout 30000",
@@ -10,14 +10,19 @@
     "precommit": "pretty-quick --staged",
     "version": "npm run changelog",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "changelog": "conventional-changelog -p befe -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+    "changelog": "conventional-changelog -p @baidu/befe -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "conventional-changelog-befe"
   ],
   "license": "MIT",
   "commitlint": {
-    "extends": []
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",

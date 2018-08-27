@@ -83,6 +83,8 @@ function transformContext(context) {
   return context
 }
 
+console.log('context', context)
+
 function getWriterOpts() {
   return {
     transform: (commit, context) => {
