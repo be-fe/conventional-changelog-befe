@@ -1,3 +1,11 @@
+<a name="1.0.3"></a>
+
+## [1.0.3](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.0.2...v1.0.3) (2018-08-27)
+
+### Features
+
+- type to be non-case sensitivity ([cc2a678](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/cc2a678))
+
 <a name="1.0.2"></a>
 
 ## [1.0.2](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.0.1...v1.0.2) (2018-08-27)
