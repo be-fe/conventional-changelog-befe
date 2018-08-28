@@ -1,3 +1,12 @@
+<a name="1.1.0"></a>
+
+# [1.1.0](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.0.5...v1.1.0) (2018-08-28)
+
+### Bug Fixes
+
+- add test for chinese scope ([a4c4f52](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/a4c4f52))
+- new line of each item ([434d893](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/434d893))
+
 <a name="1.0.5"></a>
 
 ## [1.0.5](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.0.4...v1.0.5) (2018-08-28)
