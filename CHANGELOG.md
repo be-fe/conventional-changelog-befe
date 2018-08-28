@@ -1,3 +1,11 @@
+<a name="1.1.2"></a>
+
+## [1.1.2](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.1.1...v1.1.2) (2018-08-28)
+
+### Bug Fixes
+
+- break-change.title ([ad497fc](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/ad497fc))
+
 <a name="1.1.1"></a>
 
 ## [1.1.1](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.1.0...v1.1.1) (2018-08-28)
