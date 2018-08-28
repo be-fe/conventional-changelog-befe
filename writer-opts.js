@@ -98,6 +98,7 @@ function getWriterOpts() {
         (pkg['conventional-changelog'] && pkg['conventional-changelog'].icafe) ||
         (pkg['conventional-changelog-befe'] && pkg['conventional-changelog-befe'].icafe) ||
         'noknow'
+      icafeID = icafeID.toLowerCase()
 
       let isIcode = context.isIcode
       const url = context.repository ? `${context.host}/${context.owner}/${context.repository}` : context.repoUrl
@@ -111,7 +112,7 @@ function getWriterOpts() {
         innerIcafeID = innerIcafeID || icafeID
         let issueURLPrefix = `${url}/issues/`
         if (isIcode) {
-          issueURLPrefix = `http://newicafe.baidu.com/issues/${innerIcafeID + '-'}`
+          issueURLPrefix = `http://newicafe.baidu.com/issue/${innerIcafeID + '-'}`
         }
         return isIcode ? `${issueURLPrefix}${issue}/show` : `${issueURLPrefix}${issue}`
       }
@@ -181,7 +182,11 @@ function getWriterOpts() {
       commit.references.map(ref => {
         if (ref.prefix !== '#') {
           // 'du-abc-' -> 'du-abc'
-          ref.issueURL = _issue(ref.issue, { icafeID: ref.prefix.slice(0, -1) })
+          let myId = ref.prefix.slice(0, -1).toLowerCase()
+          ref.issueURL = _issue(ref.issue, { icafeID: myId })
+          if (isIcode && myId !== icafeID) {
+            ref.repository = myId
+          }
         } else {
           ref.issueURL = _issue(ref.issue, { icafeID })
         }

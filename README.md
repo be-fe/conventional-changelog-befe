@@ -22,6 +22,10 @@ yarn add @baidu/conventional-changelog-befe
 import conventionalChangelogBefe from '@baidu/conventional-changelog-befe'
 ```
 
+## Spec
+
+https://conventionalcommits.org/lang/zh-Hans
+
 ## Related
 
 ## License
