@@ -21,30 +21,17 @@ conventional-changelog preset for baidu BEFE.
 
 ### type 允许大写字母开头
 
-```text
-'build',
-'chore',
-'ci',
-'docs',
-'feat',
-'fix',
-'perf',
-'refactor',
-'revert',
-'style',
-'test',
-'Build',
-'Chore',
-'Ci',
-'Docs',
-'Feat',
-'Fix',
-'Perf',
-'Refactor',
-'Revert',
-'Style',
-'Test'
-```
+- `build/Build`: 构建相关
+- `chore/Chore`: 其他繁杂事务的变动
+- `ci/Ci`: ci 相关的变动
+- `docs/Docs`: 文档书写改动
+- `feat/Feat`: 新功能，新特性 **(体现在 changelog)**
+- `fix/Fix`: Bug 修复 **(体现在 changelog)**
+- `perf/Perf`: 性能优化相关 **(体现在 changelog)**
+- `refactor`: 重构（即不是新增功能，也不是修改 bug 的代码变动）
+- `revert/Revert`: 代码回滚 **(体现在 changelog)**
+- `style/Style`: Code Style 修改
+- `test/Test`: 测试相关
 
 ### scope / subject 允许中文
 
