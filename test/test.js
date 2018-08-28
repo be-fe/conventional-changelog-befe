@@ -296,11 +296,11 @@ describe('angular preset', function() {
         through(function(chunk) {
           chunk = chunk.toString()
 
-          expect(chunk).to.include('(http://newicafe.baidu.com/issues/dulife-hr-11/show')
-          expect(chunk).to.not.include('(http://newicafe.baidu.com/issues/dulife-hr-13/show')
-          expect(chunk).to.include('(http://newicafe.baidu.com/issues/du-abc-13/show')
-          expect(chunk).to.include('(http://newicafe.baidu.com/issues/dulife-hr-12/show')
-          expect(chunk).to.include('(http://newicafe.baidu.com/issues/dulife-hr-5/show')
+          expect(chunk).to.include('(http://newicafe.baidu.com/issue/dulife-hr-11/show')
+          expect(chunk).to.not.include('(http://newicafe.baidu.com/issue/dulife-hr-13/show')
+          expect(chunk).to.include('(http://newicafe.baidu.com/issue/du-abc-13/show')
+          expect(chunk).to.include('(http://newicafe.baidu.com/issue/dulife-hr-12/show')
+          expect(chunk).to.include('(http://newicafe.baidu.com/issue/dulife-hr-5/show')
 
           done()
         })
