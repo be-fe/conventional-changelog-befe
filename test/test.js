@@ -61,7 +61,7 @@ betterThanBefore.setups([
   }
 ])
 
-describe('angular preset', function() {
+describe('befe preset', function() {
   it('should replace @username with gitlab user URL', function(done) {
     preparing(4)
 
@@ -93,12 +93,12 @@ describe('angular preset', function() {
         through(function(chunk) {
           chunk = chunk.toString()
 
-          expect(chunk).to.include('Continuous Integration')
-          expect(chunk).to.include('Build System')
-          expect(chunk).to.include('Documentation')
-          expect(chunk).to.include('Styles')
-          expect(chunk).to.include('Code Refactoring')
-          expect(chunk).to.include('Tests')
+          expect(chunk).to.include('持续集成')
+          expect(chunk).to.include('构建')
+          expect(chunk).to.include('文档')
+          expect(chunk).to.include('样式')
+          expect(chunk).to.include('代码重构')
+          expect(chunk).to.include('测试')
 
           done()
         })
@@ -221,8 +221,60 @@ describe('angular preset', function() {
           expect(chunk).to.include('](https://github.internal.example.com/conventional-changelog/internal/commit/')
           expect(chunk).to.include('5](https://github.internal.example.com/conventional-changelog/internal/issues/5')
           expect(chunk).to.include(
-            ' closes [#10](https://github.internal.example.com/conventional-changelog/internal/issues/10)'
+            ', closes [#10](https://github.internal.example.com/conventional-changelog/internal/issues/10)'
           )
+
+          done()
+        })
+      )
+  })
+
+  it('should support non public GitHub repository locations on zh', function(done) {
+    preparing(7)
+
+    conventionalChangelogCore({
+      config: preset,
+      pkg: {
+        path: path.join(__dirname, 'fixtures/_ghe-zh-host.json')
+      }
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+
+          expect(chunk).to.include('(https://github.internal.example.com/dlmr')
+          expect(chunk).to.include('(https://github.internal.example.com/conventional-changelog/internal/compare')
+          expect(chunk).to.include('](https://github.internal.example.com/conventional-changelog/internal/commit/')
+          expect(chunk).to.include('5](https://github.internal.example.com/conventional-changelog/internal/issues/5')
+          expect(chunk).to.include(
+            ', 关闭 [#10](https://github.internal.example.com/conventional-changelog/internal/issues/10)'
+          )
+
+          done()
+        })
+      )
+  })
+
+  it('should support Icode repository on zh', function(done) {
+    preparing(7)
+
+    conventionalChangelogCore({
+      config: preset,
+      pkg: {
+        path: path.join(__dirname, 'fixtures/_icode-zh-host.json')
+      }
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+
+          expect(chunk).to.include(', 关闭卡片 [#10](http://newicafe')
 
           done()
         })

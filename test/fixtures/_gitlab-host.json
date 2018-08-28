@@ -1,6 +1,7 @@
 {
   "repository": "ghe",
   "version": "3.0.0",
+  "lang": "en",
   "repository": {
     "type": "git",
     "url": "ssh://g@gitlab.baidu.com:8022/be-fe/conventional-changelog-befe.git"

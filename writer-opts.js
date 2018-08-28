@@ -11,6 +11,7 @@ const u = require(`url`)
 const urlJoin = require(`url-join`)
 const readFile = Q.denodeify(require(`fs`).readFile)
 const resolve = require(`path`).resolve
+const { i18n: i, setLanguage } = require(`./i18n`)
 
 function stripPort(url) {
   let obj = u.parse(url)
@@ -92,6 +93,11 @@ function getWriterOpts() {
       }
 
       let pkg = context.packageData || {}
+      let lang = pkg.lang || pkg.language || 'zh'
+      setLanguage(lang)
+      const i18n = (context.i18n = context.i18n || {})
+      i18n.close = i('close')
+
       let icafeID =
         pkg['icafe'] ||
         pkg['newicafe'] ||
@@ -103,6 +109,7 @@ function getWriterOpts() {
       let isIcode = context.isIcode
       const url = context.repository ? `${context.host}/${context.owner}/${context.repository}` : context.repoUrl
       if (isIcode) {
+        i18n.close = i('close.icode')
         context.compare = 'merge'
       } else {
         context.compare = 'compare'
@@ -127,27 +134,27 @@ function getWriterOpts() {
 
       commit.type = typeof commit.type === 'string' ? commit.type.toLowerCase() : commit.type
       if (commit.type === `feat`) {
-        commit.type = `Features`
+        commit.type = i('feat.title')
       } else if (commit.type === `fix`) {
-        commit.type = `Bug Fixes`
+        commit.type = i('fix.title')
       } else if (commit.type === `perf`) {
-        commit.type = `Performance Improvements`
+        commit.type = i('perf.title')
       } else if (commit.type === `revert`) {
-        commit.type = `Reverts`
+        commit.type = i('revert.title')
       } else if (discard) {
         return
       } else if (commit.type === `docs`) {
-        commit.type = `Documentation`
+        commit.type = i('docs.title')
       } else if (commit.type === `style`) {
-        commit.type = `Styles`
+        commit.type = i('style.title')
       } else if (commit.type === `refactor`) {
-        commit.type = `Code Refactoring`
+        commit.type = i('refactor.title')
       } else if (commit.type === `test`) {
-        commit.type = `Tests`
+        commit.type = i('test.title')
       } else if (commit.type === `build`) {
-        commit.type = `Build System`
+        commit.type = i('build.title')
       } else if (commit.type === `ci`) {
-        commit.type = `Continuous Integration`
+        commit.type = i('ci.title')
       }
 
       if (commit.scope === `*`) {

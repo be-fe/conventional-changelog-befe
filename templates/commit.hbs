@@ -28,7 +28,7 @@
 
 {{~!-- commit references --}}
 {{~#if references~}}
-  , closes
+  , {{@root.i18n.close}}
   {{~#each references}} {{#if @root.linkReferences~}}
     [
     {{~this.repository}}#{{this.issue}}]({{this.issueURL}})
