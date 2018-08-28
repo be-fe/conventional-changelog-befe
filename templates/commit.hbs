@@ -32,5 +32,8 @@
   {{~#each references}} {{#if @root.linkReferences~}}
     [
     {{~this.repository}}#{{this.issue}}]({{this.issueURL}})
+  {{~else}}
+    {{~this.repository}}#{{this.issue}}
   {{~/if}}{{/each}}
 {{~/if}}
+

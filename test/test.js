@@ -1,5 +1,6 @@
 var conventionalChangelogCore = require('conventional-changelog-core')
 var preset = require('../')
+// var preset = require('conventional-changelog-angular')
 var expect = require('chai').expect
 var mocha = require('mocha')
 var describe = mocha.describe
@@ -26,7 +27,7 @@ betterThanBefore.setups([
     gitDummyCommit(['fix(compile): avoid a bug', 'BREAKING CHANGE: The Change is huge.'])
     gitDummyCommit(['perf(ngOptions): make it faster', ' closes #1, #2'])
     gitDummyCommit('revert(ngOptions): bad commit')
-    gitDummyCommit('fix(*): oops ')
+    gitDummyCommit('fix(*): oops')
   },
   function() {
     gitDummyCommit(['feat(awesome): addresses the issue brought up in #133'])
@@ -76,6 +77,7 @@ describe('befe preset', function() {
       .pipe(
         through(function(chunk) {
           chunk = chunk.toString()
+          console.log('chunk', chunk)
           expect(chunk).to.include('[@bcoe](http://gitlab.baidu.com/bcoe)')
           done()
         })
@@ -228,6 +230,40 @@ describe('befe preset', function() {
             ', closes [#10](https://github.internal.example.com/conventional-changelog/internal/issues/10)'
           )
 
+          done()
+        })
+      )
+  })
+
+  it('should support non public GitHub repository locations when linkReferences disabled', function(done) {
+    preparing(7)
+
+    conventionalChangelogCore(
+      {
+        config: preset,
+        pkg: {
+          path: path.join(__dirname, 'fixtures/_ghe-host.json')
+        }
+      },
+      {
+        linkReferences: false
+      }
+    )
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+
+          expect(chunk).not.to.include('(https://github.internal.example.com/dlmr')
+          expect(chunk).to.include('@dlmr')
+          expect(chunk).to.include('(https://github.internal.example.com/conventional-changelog/internal/compare')
+
+          expect(chunk).not.to.include('](https://github.internal.example.com/conventional-changelog/internal/commit/')
+          expect(chunk).not.to.include(
+            '5](https://github.internal.example.com/conventional-changelog/internal/issues/5'
+          )
           done()
         })
       )

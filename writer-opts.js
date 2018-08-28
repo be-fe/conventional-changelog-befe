@@ -165,7 +165,7 @@ function getWriterOpts() {
         commit.hash = commit.hash.substring(0, 7)
       }
 
-      if (typeof commit.subject === `string`) {
+      if (typeof commit.subject === `string` && context.linkReferences) {
         if (url) {
           // Issue URLs.
           commit.subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => {
