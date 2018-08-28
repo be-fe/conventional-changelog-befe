@@ -1,3 +1,11 @@
+<a name="1.1.1"></a>
+
+## [1.1.1](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.1.0...v1.1.1) (2018-08-28)
+
+### Bug Fixes
+
+- update newline about footer ([f13fe10](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/f13fe10))
+
 <a name="1.1.0"></a>
 
 # [1.1.0](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.0.5...v1.1.0) (2018-08-28)
