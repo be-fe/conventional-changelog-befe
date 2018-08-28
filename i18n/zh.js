@@ -16,6 +16,7 @@ module.exports = {
   'test.title': '测试',
   'build.title': '构建',
   'ci.title': '持续集成',
+  'break-change.title': '突破性变化',
 
   close: '关闭',
   'close.icode': '关闭卡片'
