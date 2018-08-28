@@ -32,6 +32,7 @@ conventional-changelog preset for baidu BEFE.
 - `revert/Revert`: 代码回滚 **(体现在 changelog)**
 - `style/Style`: Code Style 修改
 - `test/Test`: 测试相关
+- `temp/Temp`: 临时提交
 
 ### scope / subject 允许中文
 
