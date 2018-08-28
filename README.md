@@ -8,6 +8,10 @@
 
 conventional-changelog preset for baidu BEFE.
 
+## 样例项目
+
+[icode commit-demo](http://icode.baidu.com/repos/baidu/personal-code/commit-demo)
+
 ## 规范标准
 
 - [Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
@@ -50,7 +54,7 @@ feat(编辑页面): 添加自动保存
 
 ### 支持 icode / baidu gitlab / icafe
 
-如果是 icode 仓库（会读取 `package.json` 中的 `repository` 或者 获取 git 远端地址），需要在 `package.json` 中配置 `icafe` 或者 `newicafe` 字段，对应为该项目的 icafe Id。
+如果是 icode 或 baidu gitlab 仓库（会读取 `package.json` 中的 `repository` 或者 获取 git 远端地址），需要在 `package.json` 中配置 `icafe` 或者 `newicafe` 字段，对应为该项目的 icafe Id。
 
 ```json
 {
@@ -66,6 +70,16 @@ feat(编辑页面): 添加自动保存
 feat: 完成 changelog 文档任务
 
 closes BEFE-ERP-225 befe-erp-564
+```
+
+### changelog 支持中英文
+
+在 `package.json` 中配置
+
+```json
+{
+  "lang": "zh" // 'zh' | 'cn'
+}
 ```
 
 ## 使用
