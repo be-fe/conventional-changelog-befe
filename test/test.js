@@ -47,7 +47,9 @@ betterThanBefore.setups([
   },
   function() {
     shell.exec('git tag v1.0.0')
-    gitDummyCommit('feat: some more features')
+    gitDummyCommit('feat(你好): some more features')
+    gitDummyCommit('feat(你好): 你好')
+    gitDummyCommit('feat(你 好): 你 好')
   },
   function() {
     gitDummyCommit(['feat(*): implementing #5 by @dlmr', ' closes #10'])
@@ -121,7 +123,9 @@ describe('befe preset', function() {
           function(chunk, enc, cb) {
             chunk = chunk.toString()
 
-            expect(chunk).to.include('some more features')
+            expect(chunk).to.include('**你 好:** 你 好')
+            expect(chunk).to.include('**你好:** some more features')
+            expect(chunk).to.include('**你好:** 你好')
             expect(chunk).to.not.include('BREAKING')
 
             i++
