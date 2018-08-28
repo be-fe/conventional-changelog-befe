@@ -157,6 +157,8 @@ function getWriterOpts() {
         commit.type = i('build.title')
       } else if (commit.type === `ci`) {
         commit.type = i('ci.title')
+      } else if (commit.type === `temp`) {
+        commit.type = i('temp.title')
       }
 
       if (commit.scope === `*`) {

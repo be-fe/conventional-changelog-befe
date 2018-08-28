@@ -22,6 +22,7 @@ betterThanBefore.setups([
     shell.exec('git init --template=./git-templates')
 
     gitDummyCommit(['build: first build setup', 'BREAKING CHANGE: New build system.'])
+    gitDummyCommit('temp: temp test')
     gitDummyCommit(['ci(travis): add TravisCI pipeline', 'BREAKING CHANGE: Continuously integrated.'])
     gitDummyCommit(['feat: amazing new module', 'BREAKING CHANGE: Not backward compatible.'])
     gitDummyCommit(['fix(compile): avoid a bug', 'BREAKING CHANGE: The Change is huge.'])

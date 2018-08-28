@@ -16,6 +16,7 @@ module.exports = {
   'test.title': 'Tests',
   'build.title': 'Build System',
   'ci.title': 'Continuous Integration',
+  'temp.title': 'Temporary',
   'break-change.title': 'BREAKING CHANGES',
 
   close: 'closes',
