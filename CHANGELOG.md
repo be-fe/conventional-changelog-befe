@@ -1,3 +1,11 @@
+<a name="1.0.5"></a>
+
+## [1.0.5](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.0.4...v1.0.5) (2018-08-28)
+
+### Features
+
+- **i18n:** supports i18n (zh/en) ([86e4a12](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/86e4a12))
+
 <a name="1.0.4"></a>
 
 ## [1.0.4](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.0.3...v1.0.4) (2018-08-28)
