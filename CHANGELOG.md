@@ -1,3 +1,11 @@
+<a name="1.2.1"></a>
+
+## [1.2.1](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.2.0...v1.2.1) (2018-08-28)
+
+### Features
+
+- supports temp type ([ba170e1](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/ba170e1))
+
 <a name="1.2.0"></a>
 
 # [1.2.0](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.1.2...v1.2.0) (2018-08-28)
