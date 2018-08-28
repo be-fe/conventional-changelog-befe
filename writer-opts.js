@@ -107,6 +107,8 @@ function getWriterOpts() {
       icafeID = icafeID.toLowerCase()
 
       let isIcode = context.isIcode
+      let isBaiduGitLab = context.isBaiduGitLab
+      let maybeIcafe = (isIcode || isBaiduGitLab) && icafeID !== 'noknow'
       const url = context.repository ? `${context.host}/${context.owner}/${context.repository}` : context.repoUrl
       if (isIcode) {
         i18n.close = i('close.icode')
@@ -118,10 +120,10 @@ function getWriterOpts() {
       const _issue = (issue, { icafeID: innerIcafeID } = {}) => {
         innerIcafeID = innerIcafeID || icafeID
         let issueURLPrefix = `${url}/issues/`
-        if (isIcode) {
+        if (maybeIcafe) {
           issueURLPrefix = `http://newicafe.baidu.com/issue/${innerIcafeID + '-'}`
         }
-        return isIcode ? `${issueURLPrefix}${issue}/show` : `${issueURLPrefix}${issue}`
+        return maybeIcafe ? `${issueURLPrefix}${issue}/show` : `${issueURLPrefix}${issue}`
       }
 
       let discard = true
@@ -170,7 +172,6 @@ function getWriterOpts() {
           // Issue URLs.
           commit.subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => {
             issues.push(issue)
-
             return `[#${issue}](${_issue(issue)})`
           })
         }
@@ -191,7 +192,7 @@ function getWriterOpts() {
           // 'du-abc-' -> 'du-abc'
           let myId = ref.prefix.slice(0, -1).toLowerCase()
           ref.issueURL = _issue(ref.issue, { icafeID: myId })
-          if (isIcode && myId !== icafeID) {
+          if (maybeIcafe && myId !== icafeID) {
             ref.repository = myId
           }
         } else {

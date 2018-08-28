@@ -77,7 +77,6 @@ describe('befe preset', function() {
       .pipe(
         through(function(chunk) {
           chunk = chunk.toString()
-          console.log('chunk', chunk)
           expect(chunk).to.include('[@bcoe](http://gitlab.baidu.com/bcoe)')
           done()
         })

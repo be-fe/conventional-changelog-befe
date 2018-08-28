@@ -8,25 +8,94 @@
 
 conventional-changelog preset for baidu BEFE.
 
-## Installation
+## 规范标准
 
-```bash
-npm install @baidu/conventional-changelog-befe
-# or use yarn
-yarn add @baidu/conventional-changelog-befe
+- [Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
+- [约定式提交](https://conventionalcommits.org/lang/zh-Hans)
+
+除了上述规范标准以外，befe 规范还支持：
+
+### type 允许大写字母开头
+
+```text
+'build',
+'chore',
+'ci',
+'docs',
+'feat',
+'fix',
+'perf',
+'refactor',
+'revert',
+'style',
+'test',
+'Build',
+'Chore',
+'Ci',
+'Docs',
+'Feat',
+'Fix',
+'Perf',
+'Refactor',
+'Revert',
+'Style',
+'Test'
 ```
 
-## Usage
+### scope / subject 允许中文
 
-```javascript
-import conventionalChangelogBefe from '@baidu/conventional-changelog-befe'
+```text
+feat(编辑页面): 添加自动保存
 ```
 
-## Spec
+### 支持 icode / baidu gitlab / icafe
 
-https://conventionalcommits.org/lang/zh-Hans
+如果是 icode 仓库（会读取 `package.json` 中的 `repository` 或者 获取 git 远端地址），需要在 `package.json` 中配置 `icafe` 或者 `newicafe` 字段，对应为该项目的 icafe Id。
+
+```json
+{
+  "icafe": "dulife-hr"
+}
+```
+
+然后在 commit message 中匹配的 `#123` 将会在 changelog 对应为 icafe 对应 issue 地址。
+
+如果是想关联其他项目的卡片，则需要在 commit message 中书写完整的 icafe ID, 如
+
+```text
+feat: 完成 changelog 文档任务
+
+closes BEFE-ERP-225 befe-erp-564
+```
+
+## 使用
+
+### 安装
+
+```
+npm i conventional-changelog-cli @baidu/conventional-changelog-befe -D --registry=http://registry.npm.baidu-int.com
+```
+
+### 在项目 (`package.json`) 配置
+
+```json
+{
+  "scripts": {
+    "changelog": "conventional-changelog -p @baidu/befe -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "version": "npm run changelog"
+  }
+}
+```
+
+### 触发
+
+执行 `npm version [version]` 或直接执行 `npm run changelog`
 
 ## Related
+
+- [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) - 根据 commit message 生成 changelog
+- [commitlint](https://github.com/marionebl/commitlint) - Lint commit messages
+- [@baidu/commitlint-config-befe](http://gitlab.baidu.com/be-fe/commitlint-config-befe) - commitlint lint 预设
 
 ## License
 
