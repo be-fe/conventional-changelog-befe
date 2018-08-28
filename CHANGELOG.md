@@ -1,3 +1,11 @@
+<a name="1.2.0"></a>
+
+# [1.2.0](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.1.2...v1.2.0) (2018-08-28)
+
+### Bug Fixes
+
+- gitlab allows icafe ([10c2663](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/10c2663))
+
 <a name="1.1.2"></a>
 
 ## [1.1.2](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.1.1...v1.1.2) (2018-08-28)
