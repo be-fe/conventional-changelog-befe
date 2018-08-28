@@ -272,8 +272,8 @@ describe('angular preset', function() {
           expect(chunk).to.not.include('(http://icode.baidu.com/users/5')
           expect(chunk).to.include('(http://icode.baidu.com/users/username')
           expect(chunk).to.include('(http://icode.baidu.com/repos/baidu/dulife/dulife-pc/commits/')
-          expect(chunk).to.include('(http://newicafe.baidu.com/issues/dulife-hr-10/show')
-          expect(chunk).to.include('(http://newicafe.baidu.com/issues/dulife-hr-5/')
+          expect(chunk).to.include('(http://newicafe.baidu.com/issue/dulife-hr-10/show')
+          expect(chunk).to.include('(http://newicafe.baidu.com/issue/dulife-hr-5/')
 
           done()
         })
