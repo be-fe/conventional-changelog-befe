@@ -66,7 +66,7 @@ closes BEFE-ERP-225 befe-erp-564
 
 ```json
 {
-  "lang": "zh" // 'zh' | 'cn'
+  "lang": "zh" // 'zh' | 'en'
 }
 ```
 
