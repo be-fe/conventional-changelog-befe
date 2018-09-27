@@ -421,4 +421,25 @@ describe('befe preset', function() {
         })
       )
   })
+
+  it('should skip link when with not host', function(done) {
+    preparing(9)
+
+    conventionalChangelogCore({
+      config: preset,
+      pkg: {
+        path: path.join(__dirname, 'fixtures/_without-host.json')
+      }
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          expect(chunk).not.to.include('http')
+          done()
+        })
+      )
+  })
 })
