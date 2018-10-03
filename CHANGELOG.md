@@ -1,3 +1,7 @@
+<a name="1.3.1"></a>
+
+## [1.3.1](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.3.0...v1.3.1) (2018-10-03)
+
 <a name="1.3.0"></a>
 
 # [1.3.0](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.2.1...v1.3.0) (2018-10-03)
