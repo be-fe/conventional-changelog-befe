@@ -9,6 +9,7 @@ const compareFunc = require(`compare-func`)
 const Q = require(`q`)
 const u = require(`url`)
 const urlJoin = require(`url-join`)
+const { normalizeIcafeByPkg } = require(`@baidu/normalize-icafe-pkg`)
 const readFile = Q.denodeify(require(`fs`).readFile)
 const resolve = require(`path`).resolve
 const { i18n: i, setLanguage } = require(`./i18n`)
@@ -98,13 +99,8 @@ function getWriterOpts() {
       const i18n = (context.i18n = context.i18n || {})
       i18n.close = i('close')
 
-      let icafeID =
-        pkg['icafe'] ||
-        pkg['newicafe'] ||
-        (pkg['conventional-changelog'] && pkg['conventional-changelog'].icafe) ||
-        (pkg['conventional-changelog-befe'] && pkg['conventional-changelog-befe'].icafe) ||
-        'noknow'
-      icafeID = icafeID.toLowerCase()
+      const icafe = normalizeIcafeByPkg(pkg) || { spaceId: 'noknow' }
+      const icafeID = icafe.spaceId
 
       let isIcode = context.isIcode
       let isBaiduGitLab = context.isBaiduGitLab
