@@ -42,11 +42,21 @@ feat(编辑页面): 添加自动保存
 
 ### 支持 icode / baidu gitlab / icafe
 
-如果是 icode 或 baidu gitlab 仓库（会读取 `package.json` 中的 `repository` 或者 获取 git 远端地址），需要在 `package.json` 中配置 `icafe` 或者 `newicafe` 字段，对应为该项目的 icafe Id。
+如果是 icode 或 baidu gitlab 仓库（会读取 `package.json` 中的 `repository` 或者 获取 git 远端地址），需要在 `package.json` 中配置 `icafe` 字段，对应为该项目的 icafe Id。
 
 ```json
 {
   "icafe": "dulife-hr"
+}
+```
+
+或者
+
+```json
+{
+  "icafe": {
+    "spaceId": "dulife-hr"
+  }
 }
 ```
 
