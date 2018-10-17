@@ -40,6 +40,26 @@ conventional-changelog preset for baidu BEFE.
 feat(编辑页面): 添加自动保存
 ```
 
+### 特殊的
+
+#### 代码回滚 Revert
+
+除了支持规范定义的
+
+```text
+revert: fix: something
+
+This reverts commit 05699d0ded15dc35a038612a38185aa71274151.
+```
+
+同时支持默认 `git revert` message 模板
+
+```text
+Revert "fix: something"
+
+This reverts commit 05699d0ded15dc35a038612a38185aa71274151.
+```
+
 ### 支持 icode / baidu gitlab / icafe
 
 如果是 icode 或 baidu gitlab 仓库（会读取 `package.json` 中的 `repository` 或者 获取 git 远端地址），需要在 `package.json` 中配置 `icafe` 字段，对应为该项目的 icafe Id。

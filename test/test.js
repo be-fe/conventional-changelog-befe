@@ -62,6 +62,21 @@ betterThanBefore.setups([
   },
   function() {
     gitDummyCommit(['Fix: use #5', ' closes #11,#12,du-abc-13'])
+  },
+  // 10
+  function() {
+    shell.exec('git tag v1.0.1')
+    gitDummyCommit(['Revert: title a\n', 'This reverts commit 123.'])
+    gitDummyCommit([
+      'revert \\"chore: saveq\\"\n' + '\n' + 'This reverts commit 05699d0ded15dc35a038612a38185aa71274151d.'
+    ])
+    gitDummyCommit(['revert: title aa\n', 'This reverts commit bbaa.'])
+    gitDummyCommit(['fix: title aa'])
+  },
+
+  // 11
+  function() {
+    gitDummyCommit(['fix: lalal', ' closes -1 i-2 i-b-3'])
   }
 ])
 
@@ -438,6 +453,49 @@ describe('befe preset', function() {
         through(function(chunk) {
           chunk = chunk.toString()
           expect(chunk).not.to.include('http')
+          done()
+        })
+      )
+  })
+
+  it('should used for revert', function() {
+    preparing(10)
+
+    conventionalChangelogCore({
+      config: preset
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          expect(chunk).to.include('chore: saveq')
+          expect(chunk).to.include('title a')
+          expect(chunk).to.include('title aa')
+          done()
+        })
+      )
+  })
+
+  it('should used for icafe-prefix', function() {
+    preparing(11)
+
+    conventionalChangelogCore({
+      config: preset,
+      pkg: {
+        path: path.join(__dirname, 'fixtures/_icode-zh-host.json')
+      }
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          expect(chunk).not.to.include('#1')
+          expect(chunk).to.include('#2')
+          expect(chunk).to.include('#3')
           done()
         })
       )

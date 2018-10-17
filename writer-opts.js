@@ -131,6 +131,19 @@ function getWriterOpts() {
       })
 
       commit.type = typeof commit.type === 'string' ? commit.type.toLowerCase() : commit.type
+
+      // 允许
+      // Revert "title"\n\n This reverts commit xxxx.
+      // revert: title\n\n This reverts commit xxxx.
+      if (commit.revert) {
+        commit.revert.header = commit.revert.header || commit.revert.headerFallback
+        commit.revert.hash = commit.revert.hash || commit.revert.hashFallback
+      }
+      if (commit.revert && !commit.type) {
+        commit.type = 'revert'
+        commit.subject = commit.subject || commit.revert.header
+      }
+
       if (commit.type === `feat`) {
         commit.type = i('feat.title')
       } else if (commit.type === `fix`) {
