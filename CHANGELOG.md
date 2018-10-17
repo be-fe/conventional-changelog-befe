@@ -1,3 +1,11 @@
+<a name="1.4.0"></a>
+
+# [1.4.0](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.3.1...v1.4.0) (2018-10-17)
+
+### Features
+
+- support revert from git ([b1c4fa9](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/b1c4fa9))
+
 <a name="1.3.1"></a>
 
 ## [1.3.1](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.3.0...v1.3.1) (2018-10-03)
