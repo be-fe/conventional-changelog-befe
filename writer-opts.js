@@ -228,6 +228,7 @@ function getWriterOpts() {
       let hasTypeInHeader = false
 
       const pushCommit = line => {
+        if (!line) return false
         const obj = sync(line, parserOpts)
         if (!obj.type) return false
         const newCommit = Object.assign({}, commit, obj)
@@ -270,7 +271,7 @@ function getWriterOpts() {
 
           if (rest) {
             if (isFirst) {
-              pushCommit(slicedMsg)
+              pushCommit([slicedMsg, commit.body, commit.footer].join('\n\n'))
               isFirst = false
             }
             hasTypeInHeader = true

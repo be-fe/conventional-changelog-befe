@@ -82,13 +82,17 @@ betterThanBefore.setups([
   function() {
     shell.exec('git tag v1.0.2')
     // gitDummyCommit(['fix: lalal & fix: asas & feat: lalala'])
-    gitDummyCommit(['fix: lalal \nfix: asas @yucong02 \nfeat: lalala', 'chore: ssss'])
+    gitDummyCommit(['fix: lalala \nfix: asas @yucong02 \nfeat: lalala', 'closed #123, #222'])
     gitDummyCommit(['fix: lalal \n illegal'])
   },
   // 13
   function() {
     shell.exec('git tag v1.0.3')
-    gitDummyCommit(['fix: nihao @yucong02 & sdsd & fix: 你好nihao & sdsd  & feat: 看看看& & asd'])
+    gitDummyCommit([
+      'fix: nihao @yucong02 & sdsd & fix: 你好nihao & sdsd  & feat: 看看看& & asd',
+      'feat: newline',
+      'closed #123, #233'
+    ])
     gitDummyCommit(['fix: lalal \n newline-illegal'])
     gitDummyCommit(['fix: lalal & illegal'])
     gitDummyCommit(['lalal & illegal'])
@@ -528,7 +532,7 @@ describe('befe preset', function() {
         through(function(chunk) {
           chunk = chunk.toString()
           console.log(chunk)
-          expect(chunk).to.match(/### 修复\n\n\* asas \[@yucong02].+?\n\* lalal .+?\n\* lalal .+?\n/)
+          expect(chunk).to.match(/### 修复\n\n\* asas \[@yucong02].+?\n\* lalal .+?\n\* lalala .+, 关闭 \[#123]/)
           expect(chunk).to.match(/### 新特性\n\n\* lalala .+?\s+$/)
           done()
         })
@@ -548,9 +552,9 @@ describe('befe preset', function() {
           chunk = chunk.toString()
           console.log(chunk)
           expect(chunk).to.match(
-            /### 修复\n\n\* lalal .+?\n\* lalal & illegal .+?\n\* nihao \[@yucong02].+? & sdsd .+?\n\* 你好nihao & sdsd /
+            /### 修复\n\n\* lalal .+?\n\* lalal & illegal .+?\n\* nihao \[@yucong02].+ & sdsd .+\n.*\* 你好nihao & sdsd/
           )
-          expect(chunk).to.match(/### 新特性\n\n\* * 看看看& & asd .+?\s+/)
+          expect(chunk).to.match(/### 新特性[^]*newline.*\n[^]*看看看& & asd/)
           done()
         })
       )
