@@ -1,3 +1,15 @@
+<a name="2.0.0"></a>
+
+# [2.0.0](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.4.0...v2.0.0) (2018-10-18)
+
+### Features
+
+- support multiple types in one commit ([4f0aa55](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/4f0aa55))
+
+### BREAKING CHANGES
+
+- treat `fix: abc & fix: bcd` as fixing twice
+
 <a name="1.4.0"></a>
 
 # [1.4.0](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.3.1...v1.4.0) (2018-10-17)
