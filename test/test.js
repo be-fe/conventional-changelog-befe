@@ -77,6 +77,13 @@ betterThanBefore.setups([
   // 11
   function() {
     gitDummyCommit(['fix: lalal', ' closes -1 i-2 i-b-3'])
+  },
+  // 12
+  function() {
+    shell.exec('git tag v1.0.2')
+    // gitDummyCommit(['fix: lalal & fix: asas & feat: lalala'])
+    gitDummyCommit(['fix: lalal \nfix: asas \nfeat: lalala', 'chore: ssss'])
+    gitDummyCommit(['fix: lalal \n illegal'])
   }
 ])
 
@@ -496,6 +503,23 @@ describe('befe preset', function() {
           expect(chunk).not.to.include('#1')
           expect(chunk).to.include('#2')
           expect(chunk).to.include('#3')
+          done()
+        })
+      )
+  })
+
+  it('should support `\n` for combine multiple types', function() {
+    preparing(12)
+    conventionalChangelogCore({
+      config: preset
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          console.log(chunk)
           done()
         })
       )
