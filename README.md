@@ -42,6 +42,24 @@ feat(编辑页面): 添加自动保存
 
 ### 特殊的
 
+#### 一个提交中包含多个 type (2.0)
+
+有时候可能一次提交中涉及的操作比较多，这时候需要安装如下的规则提交，才能正常解析生成 changelog，
+
+```text
+fix: foo & feat: add something & chore: abc @yucong02
+
+some description
+```
+
+```text
+fix: foo
+feat: add something
+chore: abc @yucong02
+
+some description
+```
+
 #### 代码回滚 Revert
 
 除了支持规范定义的

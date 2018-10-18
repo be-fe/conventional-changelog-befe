@@ -13,7 +13,7 @@ const urlJoin = require(`url-join`)
 const { normalizeIcafeByPkg } = require(`@baidu/normalize-icafe-pkg`)
 const readFile = Q.denodeify(require(`fs`).readFile)
 const resolve = require(`path`).resolve
-const { sync } = require(`conventional-commits-parser`)
+const { sync } = require('conventional-commits-parser')
 
 const parserOpts = require(`./parser-opts`)
 const { i18n: i, setLanguage } = require(`./i18n`)
@@ -225,34 +225,74 @@ function getWriterOpts() {
   return {
     generateOn: (commit, commits, context) => {
       let hasTypeInBody = false
+      let hasTypeInHeader = false
+
+      const pushCommit = line => {
+        const obj = sync(line, parserOpts)
+        if (!obj.type) return false
+        const newCommit = Object.assign({}, commit, obj)
+        commits.push(transform(newCommit, context))
+        return true
+      }
 
       // 支持一个提交 多个 type
-
       if (commit.body) {
         // fix: aaa\nfeat: bbb
         const lines = commit.body.split('\n')
         lines.every(line => {
-          const obj = sync(line, parserOpts)
-          // matched
-          if (obj.type) {
-            console.log(obj, commit)
-            const newCommit = Object.assign({}, commit, {
-              type: obj.type,
-              scope: obj.scope,
-              subject: obj.subject,
-              header: line,
-              body: null,
-              footer: null
-            })
-            // console.log(newCommit)
+          if (!line.trim()) return
 
-            commits.push(transform(newCommit, context))
+          if (pushCommit(line)) {
+            hasTypeInBody = true
             return true
           }
         })
       }
 
-      return !hasTypeInBody ? semverValid(commit.version) : false
+      // 支持一个提交 多个 type
+      // fix: aaa & feat: bbb & fix: ccc
+      if (commit.header) {
+        const unitRgxString = '(\\w*)(?:\\((.*)\\))?: (.*?)'
+        const concatString = ' & '
+        const rgx = new RegExp(`^(${unitRgxString})((?:${concatString}${unitRgxString})*)$`)
+
+        let isFirst = true
+        let input = commit.header
+        while (rgx.test(input)) {
+          const slicedMsg = RegExp.$1
+          const rest = RegExp.$5
+          if (!slicedMsg) return
+
+          // 在非第一次迭代过程中，添加 commit
+          if (!isFirst) {
+            pushCommit(slicedMsg)
+          }
+
+          if (rest) {
+            if (isFirst) {
+              pushCommit(slicedMsg)
+              isFirst = false
+            }
+            hasTypeInHeader = true
+            input = rest.replace(new RegExp(`^${concatString}`), '')
+            continue
+          }
+          break
+        }
+      }
+
+      // 情况 type 在头部的情况，需要清除本次提交
+      if (hasTypeInHeader) {
+        // 需要异步，因为本次提交，后续才会 push 至 commits
+        process.nextTick(() => {
+          const index = commits.indexOf(commit)
+          if (index >= 0) {
+            commits.splice(index, 1)
+          }
+        })
+      }
+
+      return !hasTypeInBody && !hasTypeInHeader ? semverValid(commit.version) : false
     },
     transform,
     groupBy: `type`,

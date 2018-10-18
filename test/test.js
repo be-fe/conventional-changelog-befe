@@ -82,8 +82,16 @@ betterThanBefore.setups([
   function() {
     shell.exec('git tag v1.0.2')
     // gitDummyCommit(['fix: lalal & fix: asas & feat: lalala'])
-    gitDummyCommit(['fix: lalal \nfix: asas \nfeat: lalala', 'chore: ssss'])
+    gitDummyCommit(['fix: lalal \nfix: asas @yucong02 \nfeat: lalala', 'chore: ssss'])
     gitDummyCommit(['fix: lalal \n illegal'])
+  },
+  // 13
+  function() {
+    shell.exec('git tag v1.0.3')
+    gitDummyCommit(['fix: nihao @yucong02 & sdsd & fix: 你好nihao & sdsd  & feat: 看看看& & asd'])
+    gitDummyCommit(['fix: lalal \n newline-illegal'])
+    gitDummyCommit(['fix: lalal & illegal'])
+    gitDummyCommit(['lalal & illegal'])
   }
 ])
 
@@ -465,7 +473,7 @@ describe('befe preset', function() {
       )
   })
 
-  it('should used for revert', function() {
+  it('should used for revert', function(done) {
     preparing(10)
 
     conventionalChangelogCore({
@@ -485,7 +493,7 @@ describe('befe preset', function() {
       )
   })
 
-  it('should used for icafe-prefix', function() {
+  it('should used for icafe-prefix', function(done) {
     preparing(11)
 
     conventionalChangelogCore({
@@ -508,7 +516,7 @@ describe('befe preset', function() {
       )
   })
 
-  it('should support `\n` for combine multiple types', function() {
+  it('should support `\\n` for combine multiple types', function(done) {
     preparing(12)
     conventionalChangelogCore({
       config: preset
@@ -520,6 +528,29 @@ describe('befe preset', function() {
         through(function(chunk) {
           chunk = chunk.toString()
           console.log(chunk)
+          expect(chunk).to.match(/### 修复\n\n\* asas \[@yucong02].+?\n\* lalal .+?\n\* lalal .+?\n/)
+          expect(chunk).to.match(/### 新特性\n\n\* lalala .+?\s+$/)
+          done()
+        })
+      )
+  })
+
+  it('should support `&` for combine multiple types', function(done) {
+    preparing(13)
+    conventionalChangelogCore({
+      config: preset
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          console.log(chunk)
+          expect(chunk).to.match(
+            /### 修复\n\n\* lalal .+?\n\* lalal & illegal .+?\n\* nihao \[@yucong02].+? & sdsd .+?\n\* 你好nihao & sdsd /
+          )
+          expect(chunk).to.match(/### 新特性\n\n\* * 看看看& & asd .+?\s+/)
           done()
         })
       )
