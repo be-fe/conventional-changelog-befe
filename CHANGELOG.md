@@ -1,3 +1,11 @@
+<a name="2.0.1"></a>
+
+## [2.0.1](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.0...v2.0.1) (2018-10-18)
+
+### Bug Fixes
+
+- 拼接 body & footer 在多个 type 的情况下 ([d42d892](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/d42d892))
+
 <a name="2.0.0"></a>
 
 # [2.0.0](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v1.4.0...v2.0.0) (2018-10-18)
