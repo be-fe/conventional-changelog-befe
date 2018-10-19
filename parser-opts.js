@@ -2,7 +2,7 @@
 
 module.exports = {
   headerPattern: /^(\w*)(?:\((.*)\))?: (.*)$/,
-  // headerPattern: /^([^:\s]*?)(?:\((.*)\))?: (.*)$/,
+  referenceActions: ['close', 'closes', 'closed', 'fix', 'fixes', 'fixed', 'resolve', 'resolves', 'resolved'],
   headerCorrespondence: [`type`, `scope`, `subject`],
   noteKeywords: [`BREAKING CHANGE`],
   revertPattern: /^(?:revert:\s([\s\S]*?)\s*This reverts commit (\w*)\.?)|(?:[Rr]evert\s"?([\s\S]*?)"?\s*This reverts commit (\w*)\.?)/,

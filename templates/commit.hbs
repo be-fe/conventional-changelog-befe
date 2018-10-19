@@ -29,11 +29,12 @@
 {{~!-- commit references --}}
 {{~#if references~}}
   , {{@root.i18n.close}}
-  {{~#each references}} {{#if @root.linkReferences~}}
-    [
-    {{~this.repository}}#{{this.issue}}]({{this.issueURL}})
-  {{~else}}
-    {{~this.repository}}#{{this.issue}}
-  {{~/if}}{{/each}}
+  {{~#each references}}
+    {{#if @root.linkReferences~}}
+      [{{~this.repository}}#{{this.issue}}]({{this.issueURL}})
+    {{~else}}
+      {{~this.repository}}#{{this.issue}}
+    {{~/if}}{{#unless @last}} {{/unless}}
+  {{~/each}}
 {{~/if}}
 

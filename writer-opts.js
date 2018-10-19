@@ -103,12 +103,12 @@ const transform = (commit, context) => {
   const i18n = (context.i18n = context.i18n || {})
   i18n.close = i('close')
 
-  const icafe = normalizeIcafeByPkg(pkg) || { spaceId: 'noknow' }
+  const icafe = normalizeIcafeByPkg(pkg) || {}
   const icafeID = icafe.spaceId
 
   let isIcode = context.isIcode
   let isBaiduGitLab = context.isBaiduGitLab
-  let maybeIcafe = (isIcode || isBaiduGitLab) && icafeID !== 'noknow'
+  let maybeIcafe = (isIcode || isBaiduGitLab) && !!icafeID
   const url = context.repository ? `${context.host}/${context.owner}/${context.repository}` : context.repoUrl
   if (isIcode) {
     i18n.close = i('close.icode')
@@ -127,8 +127,6 @@ const transform = (commit, context) => {
   }
 
   let discard = true
-  const issues = []
-
   commit.notes.forEach(note => {
     note.title = i('break-change.title')
     discard = false
@@ -184,13 +182,15 @@ const transform = (commit, context) => {
     commit.hash = commit.hash.substring(0, 7)
   }
 
-  if (typeof commit.subject === `string` && context.linkReferences) {
+  if (commit.subject && typeof commit.subject === `string` && context.linkReferences) {
     if (url) {
       // Issue URLs.
-      commit.subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => {
-        issues.push(issue)
-        return `[#${issue}](${_issue(issue)})`
-      })
+      commit.subject = commit.subject.replace(
+        new RegExp(`(${parserOpts.issuePrefixes.join('|')})([0-9]+)`, 'g'),
+        (_, prefix, issue) => {
+          return `[${prefix}${issue}](${_issue(issue, { icafeID: prefix !== '#' ? prefix.slice(0, -1) : '' })})`
+        }
+      )
     }
 
     if (context.host) {
@@ -200,11 +200,8 @@ const transform = (commit, context) => {
     }
   }
 
-  // remove references that already appear in the subject
-  commit.references = commit.references.filter(reference => {
-    return issues.indexOf(reference.issue) === -1
-  })
-  commit.references.map(ref => {
+  // 已经设置了只允许 parse 关闭、fix 卡片的 action
+  commit.references = commit.references.filter(ref => !!ref.action).map(ref => {
     if (ref.prefix !== '#') {
       // 'du-abc-' -> 'du-abc'
       let myId = ref.prefix.slice(0, -1).toLowerCase()

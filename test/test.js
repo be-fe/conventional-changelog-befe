@@ -96,6 +96,11 @@ betterThanBefore.setups([
     gitDummyCommit(['fix: lalal \n newline-illegal'])
     gitDummyCommit(['fix: lalal & illegal'])
     gitDummyCommit(['lalal & illegal'])
+  },
+  // 14: icode mentions and references
+  function() {
+    shell.exec('git tag v1.0.4')
+    gitDummyCommit(['fix: mention dulife-hr-11 #12 icafe-10', 'closed #123, dulife-hr-111 icafe-100'])
   }
 ])
 
@@ -347,9 +352,7 @@ describe('befe preset', function() {
       .pipe(
         through(function(chunk) {
           chunk = chunk.toString()
-
-          expect(chunk).to.include(', 关闭卡片 [#10](http://newicafe')
-
+          expect(chunk).to.include(', 关闭卡片: [#10](http://newicafe')
           done()
         })
       )
@@ -555,6 +558,31 @@ describe('befe preset', function() {
             /### 修复\n\n\* lalal .+?\n\* lalal & illegal .+?\n\* nihao \[@yucong02].+ & sdsd .+\n.*\* 你好nihao & sdsd/
           )
           expect(chunk).to.match(/### 新特性[^]*newline.*\n[^]*看看看& & asd/)
+          done()
+        })
+      )
+  })
+
+  // 14
+  it('should support issue in mentions or references', function(done) {
+    preparing(14)
+    conventionalChangelogCore({
+      config: preset,
+      pkg: {
+        path: path.join(__dirname, 'fixtures/_icode-host.json')
+      }
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          expect(chunk).to.includes('* mention [dulife-hr-11](')
+          expect(chunk).to.includes('[#12]')
+          expect(chunk).to.includes(
+            ', closes icafe cards: [#123](http://newicafe.baidu.com/issue/dulife-hr-123/show) [#111](http://newicafe.baidu.com/issue/dulife-hr-111/show) [icafe#100](http://newicafe.baidu.com/issue/icafe-100/show)'
+          )
           done()
         })
       )

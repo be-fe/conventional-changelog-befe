@@ -19,6 +19,6 @@ module.exports = {
   'temp.title': 'Temporary',
   'break-change.title': 'BREAKING CHANGES',
 
-  close: 'closes',
-  'close.icode': 'closes icafe'
+  close: 'closes ',
+  'close.icode': 'closes icafe cards: '
 }

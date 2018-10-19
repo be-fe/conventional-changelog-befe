@@ -19,6 +19,6 @@ module.exports = {
   'temp.title': '临时',
   'break-change.title': '突破性变化',
 
-  close: '关闭',
-  'close.icode': '关闭卡片'
+  close: '关闭 ',
+  'close.icode': '关闭卡片: '
 }
