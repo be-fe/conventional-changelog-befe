@@ -1,3 +1,11 @@
+<a name="2.0.3"></a>
+
+## [2.0.3](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.2...v2.0.3) (2018-10-19)
+
+### Bug Fixes
+
+- support commit which ends with `[]` ([4836811](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/4836811))
+
 <a name="2.0.2"></a>
 
 ## [2.0.2](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.1...v2.0.2) (2018-10-19)
