@@ -101,6 +101,15 @@ betterThanBefore.setups([
   function() {
     shell.exec('git tag v1.0.4')
     gitDummyCommit(['fix: mention dulife-hr-11 #12 icafe-10', 'closed #123, dulife-hr-111 icafe-100'])
+  },
+  // 15
+  function() {
+    shell.exec('git tag v1.1.0')
+    gitDummyCommit(
+      'Fix: New-Offer-Onboarding-Project-3378 [Bug]\n' +
+        '    \n' +
+        '    校招职位的查看页面修改 工作职责和职位要求的顺序\n'
+    )
   }
 ])
 
@@ -583,6 +592,24 @@ describe('befe preset', function() {
           expect(chunk).to.includes(
             ', closes icafe cards: [#123](http://newicafe.baidu.com/issue/dulife-hr-123/show) [#111](http://newicafe.baidu.com/issue/dulife-hr-111/show) [icafe#100](http://newicafe.baidu.com/issue/icafe-100/show)'
           )
+          done()
+        })
+      )
+  })
+
+  // 15
+  it('should support which ends with `[]`', function(done) {
+    preparing(15)
+    conventionalChangelogCore({
+      config: preset
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          expect(chunk).to.includes('[Bug] \\([')
           done()
         })
       )
