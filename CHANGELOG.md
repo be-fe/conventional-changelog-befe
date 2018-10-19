@@ -1,3 +1,11 @@
+<a name="2.0.2"></a>
+
+## [2.0.2](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.1...v2.0.2) (2018-10-19)
+
+### Bug Fixes
+
+- support `prefix-123` in subject ([ae73e6b](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/ae73e6b))
+
 <a name="2.0.1"></a>
 
 ## [2.0.1](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.0...v2.0.1) (2018-10-18)
