@@ -1,4 +1,4 @@
-# @baidu/conventional-changelog-befe
+# conventional-changelog-befe
 
 <!--[![build status](https://img.shields.io/travis/imcuttle/conventional-changelog-befe/master.svg?style=flat-square)](https://travis-ci.org/imcuttle/conventional-changelog-befe)
 [![Test coverage](https://img.shields.io/codecov/c/github/imcuttle/conventional-changelog-befe.svg?style=flat-square)](https://codecov.io/github/imcuttle/conventional-changelog-befe?branch=master)-->
@@ -145,7 +145,7 @@ npm i conventional-changelog-cli @baidu/conventional-changelog-befe -D --registr
 
 - [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) - 根据 commit message 生成 changelog
 - [commitlint](https://github.com/marionebl/commitlint) - Lint commit messages
-- [@baidu/commitlint-config-befe](http://gitlab.baidu.com/be-fe/commitlint-config-befe) - commitlint lint 预设
+- [commitlint-config-befe](http://gitlab.baidu.com/be-fe/commitlint-config-befe) - commitlint lint 预设
 
 ## License
 
