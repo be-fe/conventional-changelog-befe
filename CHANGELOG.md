@@ -1,3 +1,7 @@
+<a name="2.0.5"></a>
+
+## [2.0.5](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.4...v2.0.5) (2018-10-23)
+
 <a name="2.0.4"></a>
 
 ## [2.0.4](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.3...v2.0.4) (2018-10-23)
