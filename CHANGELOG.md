@@ -1,3 +1,11 @@
+<a name="2.0.6"></a>
+
+## [2.0.6](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.5...v2.0.6) (2018-10-25)
+
+### Performance Improvements
+
+- 修改 breakchange title ([04e1f72](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/04e1f72))
+
 <a name="2.0.5"></a>
 
 ## [2.0.5](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.4...v2.0.5) (2018-10-23)
