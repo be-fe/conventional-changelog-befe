@@ -17,7 +17,7 @@ module.exports = {
   'build.title': '构建',
   'ci.title': '持续集成',
   'temp.title': '临时',
-  'break-change.title': '突破性变化',
+  'break-change.title': '破坏性变化',
 
   close: '关闭 ',
   'close.icode': '关闭卡片: '
