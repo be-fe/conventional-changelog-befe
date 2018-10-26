@@ -17,6 +17,7 @@ module.exports = {
   'build.title': '构建',
   'ci.title': '持续集成',
   'temp.title': '临时',
+  'chore.title': '杂事',
   'break-change.title': '破坏性变化',
 
   close: '关闭 ',

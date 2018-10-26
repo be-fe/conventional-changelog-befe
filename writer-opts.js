@@ -175,6 +175,8 @@ const transform = (commit, context) => {
     commit.type = i('ci.title')
   } else if (commit.type === `temp`) {
     commit.type = i('temp.title')
+  } else if (commit.type === `chore`) {
+    commit.type = i('chore.title')
   }
 
   if (commit.scope === `*`) {

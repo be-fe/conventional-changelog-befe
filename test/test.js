@@ -110,6 +110,11 @@ betterThanBefore.setups([
         '    \n' +
         '    校招职位的查看页面修改 工作职责和职位要求的顺序\n'
     )
+  },
+  // 16
+  function() {
+    shell.exec('git tag v1.1.1')
+    gitDummyCommit(['chore: nothing', 'BREAKING CHANGE: breaking!!!'])
   }
 ])
 
@@ -610,6 +615,27 @@ describe('befe preset', function() {
         through(function(chunk) {
           chunk = chunk.toString()
           expect(chunk).to.includes('[Bug] \\([')
+          done()
+        })
+      )
+  })
+
+  // 16
+  it('should support `chore` with `BREAKING CHANGE`', function(done) {
+    preparing(16)
+    conventionalChangelogCore({
+      config: preset
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          expect(chunk).to.includes('### 杂事')
+          expect(chunk).to.includes('### 破坏性变化')
+          expect(chunk).to.includes('breaking')
+          expect(chunk).to.includes('nothing')
           done()
         })
       )
