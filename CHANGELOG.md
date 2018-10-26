@@ -1,3 +1,11 @@
+<a name="2.0.7"></a>
+
+## [2.0.7](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.6...v2.0.7) (2018-10-26)
+
+### Performance Improvements
+
+- update language's default value ([0916902](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/0916902))
+
 <a name="2.0.6"></a>
 
 ## [2.0.6](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.5...v2.0.6) (2018-10-25)

@@ -1,6 +1,6 @@
 {
   "name": "conventional-changelog-befe",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "main": "index.js",
   "description": "conventional-changelog @baidu/preset for baidu BEFE.",
   "author": "imcuttle",
