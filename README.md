@@ -1,5 +1,7 @@
 # conventional-changelog-befe
 
+## 已经迁移至 [GitHub]()
+
 <!--[![build status](https://img.shields.io/travis/imcuttle/conventional-changelog-befe/master.svg?style=flat-square)](https://travis-ci.org/imcuttle/conventional-changelog-befe)
 [![Test coverage](https://img.shields.io/codecov/c/github/imcuttle/conventional-changelog-befe.svg?style=flat-square)](https://codecov.io/github/imcuttle/conventional-changelog-befe?branch=master)-->
 
