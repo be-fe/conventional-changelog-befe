@@ -1,7 +1,6 @@
 # conventional-changelog-befe
 
 [![build status](https://img.shields.io/travis/be-fe/conventional-changelog-befe/master.svg?style=flat-square)](https://travis-ci.org/be-fe/conventional-changelog-befe)
-[![Test coverage](https://img.shields.io/codecov/c/github/be-fe/conventional-changelog-befe.svg?style=flat-square)](https://codecov.io/github/be-fe/conventional-changelog-befe?branch=master)
 [![NPM version](https://img.shields.io/npm/v/conventional-changelog-befe.svg?style=flat-square)](https://www.npmjs.com/package/conventional-changelog-befe)
 [![NPM Downloads](https://img.shields.io/npm/dm/conventional-changelog-befe.svg?style=flat-square&maxAge=43200)](https://www.npmjs.com/package/conventional-changelog-befe)
 
