@@ -6,6 +6,7 @@
  */
 
 const compareFunc = require(`compare-func`)
+const osLocale = require(`os-locale`)
 const semverValid = require(`semver`).valid
 const Q = require(`q`)
 const u = require(`url`)
@@ -89,17 +90,19 @@ function transformContext(context) {
   return context
 }
 
-const transform = (commit, context) => {
-  // console.log(commit)
+const osLang = (osLocale.sync() || '').toLowerCase().startsWith('zh') ? 'zh' : 'en'
 
+const transform = (commit, context) => {
   if (!context._isContextTransformed) {
     context._isContextTransformed = true
     transformContext(context)
   }
 
   let pkg = context.packageData || {}
-  let lang = pkg.lang || pkg.language || 'zh'
+
+  let lang = pkg.lang || pkg.language || osLang
   setLanguage(lang)
+
   const i18n = (context.i18n = context.i18n || {})
   i18n.close = i('close')
 

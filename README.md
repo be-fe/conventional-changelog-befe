@@ -2,7 +2,6 @@
 
 [![build status](https://img.shields.io/travis/be-fe/conventional-changelog-befe/master.svg?style=flat-square)](https://travis-ci.org/be-fe/conventional-changelog-befe)
 [![Test coverage](https://img.shields.io/codecov/c/github/be-fe/conventional-changelog-befe.svg?style=flat-square)](https://codecov.io/github/be-fe/conventional-changelog-befe?branch=master)
-
 [![NPM version](https://img.shields.io/npm/v/conventional-changelog-befe.svg?style=flat-square)](https://www.npmjs.com/package/conventional-changelog-befe)
 [![NPM Downloads](https://img.shields.io/npm/dm/conventional-changelog-befe.svg?style=flat-square&maxAge=43200)](https://www.npmjs.com/package/conventional-changelog-befe)
 
@@ -15,7 +14,7 @@
 ## 规范标准
 
 - [Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
-- [约定式提交](https://conventionalcommits.org/lang/zh-Hans)
+- [约定式提交](https://conventionalcommits.org/)
 
 除了上述规范标准以外，befe 规范还支持：
 
@@ -117,6 +116,8 @@ closes BEFE-ERP-225 befe-erp-564
   "lang": "zh" // 'zh' | 'en'
 }
 ```
+
+默认为系统语言
 
 ## 使用
 
