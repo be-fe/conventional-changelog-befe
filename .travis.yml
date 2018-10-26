@@ -12,7 +12,6 @@ cache:
     - node_modules
 
 before_script:
-  - npm run build
   - npm install codecov --no-save
 script:
   - npm test -- --coverage
