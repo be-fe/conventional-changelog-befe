@@ -1,3 +1,11 @@
+<a name="2.0.9"></a>
+
+## [2.0.9](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.8...v2.0.9) (2018-10-26)
+
+### Bug Fixes
+
+- add chore title ([4f5500c](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/4f5500c))
+
 <a name="2.0.8"></a>
 
 ## [2.0.8](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.7...v2.0.8) (2018-10-26)
