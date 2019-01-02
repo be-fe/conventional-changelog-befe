@@ -14,7 +14,8 @@ const urlJoin = require(`url-join`)
 const { normalizeIcafeByPkg } = require(`normalize-icafe-pkg`)
 const readFile = Q.denodeify(require(`fs`).readFile)
 const resolve = require(`path`).resolve
-const { sync } = require('conventional-commits-parser')
+const { sync } = require(`conventional-commits-parser`)
+const stripCommitMessage = require(`./stripCommitMessage`)
 
 const parserOpts = require(`./parser-opts`)
 const { i18n: i, setLanguage } = require(`./i18n`)
@@ -132,6 +133,9 @@ const transform = (commit, context) => {
   let discard = true
   commit.notes.forEach(note => {
     note.title = i('break-change.title')
+    if (typeof note.text === 'string') {
+      note.text = stripCommitMessage(note.text)
+    }
     discard = false
   })
 
@@ -228,6 +232,13 @@ function getWriterOpts() {
     generateOn: (commit, commits, context) => {
       let hasTypeInBody = false
       let hasTypeInHeader = false
+
+      // filter
+      for (let j = 0; j < commits.length; j++) {
+        if (!commits[j]) {
+          commits.splice(j, 1)
+        }
+      }
 
       const pushCommit = line => {
         if (!line) return false

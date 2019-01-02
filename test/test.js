@@ -115,6 +115,15 @@ betterThanBefore.setups([
   function() {
     shell.exec('git tag v1.1.1')
     gitDummyCommit(['chore: nothing', 'BREAKING CHANGE: breaking!!!'])
+  },
+  // 17
+  function() {
+    shell.exec('git tag v1.1.2')
+    gitDummyCommit([
+      'chore: nothing',
+      'BREAKING CHANGE: breaking!!!',
+      'Change-Id: I69756350b4d2f71929b9a5929def21795f234f2d'
+    ])
   }
 ])
 
@@ -636,6 +645,23 @@ describe('befe preset', function() {
           expect(chunk).to.includes('### 破坏性变化')
           expect(chunk).to.includes('breaking')
           expect(chunk).to.includes('nothing')
+          done()
+        })
+      )
+  })
+
+  it('should skip `Change-Id: hash` in end of text', function(done) {
+    preparing(17)
+    conventionalChangelogCore({
+      config: preset
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          expect(chunk).not.to.includes('Change-Id:')
           done()
         })
       )
