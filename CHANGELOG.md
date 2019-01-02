@@ -1,3 +1,11 @@
+<a name="2.0.10"></a>
+
+## [2.0.10](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.9...v2.0.10) (2019-01-02)
+
+### Performance Improvements
+
+- strip `Change-Id: hash` ([91aa2b9](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/commit/91aa2b9))
+
 <a name="2.0.9"></a>
 
 ## [2.0.9](http://gitlab.baidu.com/be-fe/conventional-changelog-befe/compare/v2.0.8...v2.0.9) (2018-10-26)
