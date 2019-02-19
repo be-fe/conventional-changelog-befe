@@ -52,5 +52,12 @@
   "directories": {
     "test": "test"
   },
-  "repository": "http://gitlab.baidu.com/be-fe/conventional-changelog-befe"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/be-fe/conventional-changelog-befe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/be-fe/conventional-changelog-befe/issues"
+  },
+  "homepage": "https://github.com/be-fe/conventional-changelog-befe#readme"
 }
