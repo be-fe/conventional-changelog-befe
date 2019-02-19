@@ -1,0 +1,12 @@
+{
+  "version": "3.0.0",
+  "lang": "en",
+  "repository": "https://github.com/conventional-changelog/internal",
+  "config": {
+    "conventional-changelog-befe": {
+      "i18n": {
+        "chore.title": "🐛 Chore!"
+      }
+    }
+  }
+}

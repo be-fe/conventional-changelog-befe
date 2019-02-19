@@ -11,6 +11,7 @@ const semverValid = require(`semver`).valid
 const Q = require(`q`)
 const u = require(`url`)
 const urlJoin = require(`url-join`)
+const get = require(`lodash.get`)
 const { normalizeIcafeByPkg } = require(`normalize-icafe-pkg`)
 const readFile = Q.denodeify(require(`fs`).readFile)
 const resolve = require(`path`).resolve
@@ -18,7 +19,8 @@ const { sync } = require(`conventional-commits-parser`)
 const stripCommitMessage = require(`./stripCommitMessage`)
 
 const parserOpts = require(`./parser-opts`)
-const { i18n: i, setLanguage } = require(`./i18n`)
+const { i18n: i, setLanguage, extendDictionary } = require(`./i18n`)
+const { name } = require(`./package`)
 
 function stripPort(url) {
   let obj = u.parse(url)
@@ -94,15 +96,15 @@ function transformContext(context) {
 const osLang = (osLocale.sync() || '').toLowerCase().startsWith('zh') ? 'zh' : 'en'
 
 const transform = (commit, context) => {
+  let pkg = context.packageData || {}
+  let lang = pkg.lang || pkg.language || osLang
+  setLanguage(lang)
+
   if (!context._isContextTransformed) {
     context._isContextTransformed = true
     transformContext(context)
+    extendDictionary(get(pkg, ['config', name, 'i18n'], {}))
   }
-
-  let pkg = context.packageData || {}
-
-  let lang = pkg.lang || pkg.language || osLang
-  setLanguage(lang)
 
   const i18n = (context.i18n = context.i18n || {})
   i18n.close = i('close')

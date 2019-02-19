@@ -140,7 +140,7 @@ describe('befe preset', function() {
       .pipe(
         through(function(chunk) {
           chunk = chunk.toString()
-          expect(chunk).to.include('[@bcoe](http://gitlab.baidu.com/bcoe)')
+          expect(chunk).to.include('[@bcoe](https://github.com/bcoe)')
           done()
         })
       )
@@ -557,7 +557,6 @@ describe('befe preset', function() {
       .pipe(
         through(function(chunk) {
           chunk = chunk.toString()
-          console.log(chunk)
           expect(chunk).to.match(/### 修复\n\n\* asas \[@yucong02].+?\n\* lalal .+?\n\* lalala .+, 关闭 \[#123]/)
           expect(chunk).to.match(/### 新特性\n\n\* lalala .+?\s+$/)
           done()
@@ -645,6 +644,27 @@ describe('befe preset', function() {
           expect(chunk).to.includes('### 破坏性变化')
           expect(chunk).to.includes('breaking')
           expect(chunk).to.includes('nothing')
+          done()
+        })
+      )
+  })
+
+  // 16
+  it('should support customized i18n', function(done) {
+    preparing(16)
+    conventionalChangelogCore({
+      config: preset,
+      pkg: {
+        path: path.join(__dirname, 'fixtures/_customized-i18n.json')
+      }
+    })
+      .on('error', function(err) {
+        done(err)
+      })
+      .pipe(
+        through(function(chunk) {
+          chunk = chunk.toString()
+          expect(chunk).to.includes('### 🐛 Chore!')
           done()
         })
       )
