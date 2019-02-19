@@ -141,6 +141,29 @@ npm i conventional-changelog-cli @baidu/conventional-changelog-befe -D --registr
 
 执行 `npm version [version]` 或直接执行 `npm run changelog`
 
+### 配置
+
+- `package.json`
+
+```json
+{
+  "config": {
+    "conventional-changelog-befe": {
+      "i18n": {
+        "fix.title": "🐛 BugFix"
+      }
+    }
+  }
+}
+```
+
+#### `i18n`
+
+自定义国际化文本，包含[国际化文本](i18n/zh.js)
+
+- Type: `{}`
+- Default: `{}`
+
 ## Related
 
 - [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) - 根据 commit message 生成 changelog
