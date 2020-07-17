@@ -110,7 +110,7 @@ closes BEFE-ERP-225 befe-erp-564
 
 在 `package.json` 中配置
 
-```json
+```js
 {
   "lang": "zh" // 'zh' | 'en'
 }
@@ -123,7 +123,7 @@ closes BEFE-ERP-225 befe-erp-564
 ### 安装
 
 ```
-npm i conventional-changelog-cli @baidu/conventional-changelog-befe -D --registry=http://registry.npm.baidu-int.com
+npm i conventional-changelog-cli conventional-changelog-befe -D
 ```
 
 ### 在项目 (`package.json`) 配置
@@ -131,7 +131,7 @@ npm i conventional-changelog-cli @baidu/conventional-changelog-befe -D --registr
 ```json
 {
   "scripts": {
-    "changelog": "conventional-changelog -p @baidu/befe -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "changelog": "conventional-changelog -p befe -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "version": "npm run changelog"
   }
 }
